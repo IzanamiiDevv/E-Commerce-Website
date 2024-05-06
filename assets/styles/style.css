@@ -43,8 +43,21 @@ body {
 
 .home .container .inputs {
   display: flex;
+  gap: 20%;
+  padding: 10px 20vh 10px;
 }
 
 .button-c {
+  width: 140px;
+  height: 50px;
+  position: relative;
+  background: none;
+  outline: none;
+  border: none;
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
   background-color: yellowgreen;
+  border-radius: 10px;
+  text-align: center;
 }
