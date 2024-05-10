@@ -65,28 +65,16 @@
 </section>
 
 <section class="search-form">
-    <form action="" method="POST">
-        <input type="text" class="box" placeholder="search products..." name="search_box">
-        <input type="submit" class="btn" value="search" name="search_btn">
+    <form>
+        <input type="text" class="box" placeholder="search products..." name="search_box" id="search">
     </form>
 </section>
 
 <section class="products" style="padding-top: 0;">
 
-   <div class="box-container">
-      <form action="" method="POST" class="box">
-         <a href="view_page.html?pid=<?html echo $fetch_products['id']; ?>" class="fas fa-eye"></a>
-         <div class="price">$<?html echo $fetch_products['price']; ?>/-</div>
-         <img src="uploaded_img/<?html echo $fetch_products['image']; ?>" alt="" class="image">
-         <div class="name"><?html echo $fetch_products['name']; ?></div>
-         <input type="number" name="product_quantity" value="1" min="0" class="qty">
-         <input type="hidden" name="product_id" value="<?html echo $fetch_products['id']; ?>">
-         <input type="hidden" name="product_name" value="<?html echo $fetch_products['name']; ?>">
-         <input type="hidden" name="product_price" value="<?html echo $fetch_products['price']; ?>">
-         <input type="hidden" name="product_image" value="<?html echo $fetch_products['image']; ?>">
-         <input type="submit" value="add to wishlist" name="add_to_wishlist" class="option-btn">
-         <input type="submit" value="add to cart" name="add_to_cart" class="btn">
-      </form>
+   <div class="box-container" id="item-container">
+
+
 
    </div>
 
@@ -97,15 +85,15 @@
 <section class="footer">
 
     <div class="box-container">
-
+ 
         <div class="box">
             <h3>quick links</h3>
-            <a href="home.html">home</a>
+            <a href="index.html">home</a>
             <a href="about.html">about</a>
             <a href="contact.html">contact</a>
             <a href="shop.html">shop</a>
         </div>
-
+ 
         <div class="box">
             <h3>extra links</h3>
             <a href="login.html">login</a>
@@ -113,32 +101,32 @@
             <a href="orders.html">my orders</a>
             <a href="cart.html">my cart</a>
         </div>
-
+ 
         <div class="box">
             <h3>contact info</h3>
             <p> <i class="fas fa-phone"></i> +123-456-7890 </p>
-            <p> <i class="fas fa-phone"></i> +111-222-3333 </p>
-            <p> <i class="fas fa-envelope"></i> shaikhanas@gmail.com </p>
-            <p> <i class="fas fa-map-marker-alt"></i> mumbai, india - 123-456 </p>
+            <p> <i class="fas fa-phone"></i> +09[test] </p>
+            <p> <i class="fas fa-envelope"></i> test@gmail.com </p>
+            <p> <i class="fas fa-map-marker-alt"></i> Basta </p>
         </div>
-
+ 
         <div class="box">
             <h3>follow us</h3>
             <a href="#"><i class="fab fa-facebook-f"></i>facebook</a>
             <a href="#"><i class="fab fa-twitter"></i>twitter</a>
             <a href="#"><i class="fab fa-instagram"></i>instagram</a>
-            <a href="#"><i class="fab fa-linkedin"></i>linkedin</a>
         </div>
-
+ 
     </div>
-
-    <div class="credit">&copy; copyright @ <?html echo date('Y'); ?> by <span>mr. web designer</span> </div>
-
-</section>
+ 
+    <div class="credit">&copy; copyright @2024 by <span>Johna Gallardo</span> </div>
+ 
+ </section>
 
 
 
 <script src="js/script.js"></script>
+<script type="module" src="js/search.js"></script>
 
 </body>
 </html>
