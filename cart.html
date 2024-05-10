@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>shopping cart</title>
+
+   <!-- font awesome cdn link  -->
+   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+   <!-- custom admin css file link  -->
+   <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+   
+<!--Header-->
+
+<header class="header">
+
+    <div class="flex">
+
+        <a href="home.html" class="logo">flowers.</a>
+
+        <nav class="navbar">
+            <ul>
+                <li><a href="home.html">home</a></li>
+                <li><a href="#">pages +</a>
+                    <ul>
+                        <li><a href="about.html">about</a></li>
+                        <li><a href="contact.html">contact</a></li>
+                    </ul>
+                </li>
+                <li><a href="shop.html">shop</a></li>
+                <li><a href="orders.html">orders</a></li>
+                <li><a href="#">account +</a>
+                    <ul>
+                        <li><a href="login.html">login</a></li>
+                        <li><a href="register.html">register</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+
+        <div class="icons">
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <a href="search_page.html" class="fas fa-search"></a>
+            <div id="user-btn" class="fas fa-user"></div>
+            <a href="wishlist.html"><i class="fas fa-heart"></i>
+            <a href="cart.html"><i class="fas fa-shopping-cart"></i>
+        </div>
+
+        <div class="account-box">
+            <p>username : <span></span></p>
+            <p>email : <span><</span></p>
+            <a href="logout.html" class="delete-btn">logout</a>
+        </div>
+
+    </div>
+
+</header>
+
+<!--====-->
+
+<section class="heading">
+    <h3>shopping cart</h3>
+    <p> <a href="home.html">home</a> / cart </p>
+</section>
+
+<section class="shopping-cart">
+
+    <h1 class="title">products added</h1>
+
+    <div class="box-container">
+    <div  class="box">
+        <a href="cart.html?delete=<?html echo $fetch_cart['id']; ?>" class="fas fa-times" onclick="return confirm('delete this from cart?');"></a>
+        <a href="view_page.html?pid=<?html echo $fetch_cart['pid']; ?>" class="fas fa-eye"></a>
+        <img src="uploaded_img/<?html echo $fetch_cart['image']; ?>" alt="" class="image">
+        <div class="name"><?html echo $fetch_cart['name']; ?></div>
+        <div class="price">$<?html echo $fetch_cart['price']; ?>/-</div>
+        <form action="" method="post">
+            <input type="hidden" value="<?html echo $fetch_cart['id']; ?>" name="cart_id">
+            <input type="number" min="1" value="<?html echo $fetch_cart['quantity']; ?>" name="cart_quantity" class="qty">
+            <input type="submit" value="update" class="option-btn" name="update_quantity">
+        </form>
+        <div class="sub-total"> sub-total : <span>$<?html echo $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?>/-</span> </div>
+    </div>
+    </div>
+
+    <div class="more-btn">
+        <a href="cart.html?delete_all" class="delete-btn <?html echo ($grand_total > 1)?'':'disabled' ?>" onclick="return confirm('delete all from cart?');">delete all</a>
+    </div>
+
+    <div class="cart-total">
+        <p>grand total : <span>$<?html echo $grand_total; ?>/-</span></p>
+        <a href="shop.html" class="option-btn">continue shopping</a>
+        <a href="checkout.html" class="btn  <?html echo ($grand_total > 1)?'':'disabled' ?>">proceed to checkout</a>
+    </div>
+
+</section>
+
+
+
+
+
+
+<section class="footer">
+
+    <div class="box-container">
+
+        <div class="box">
+            <h3>quick links</h3>
+            <a href="home.html">home</a>
+            <a href="about.html">about</a>
+            <a href="contact.html">contact</a>
+            <a href="shop.html">shop</a>
+        </div>
+
+        <div class="box">
+            <h3>extra links</h3>
+            <a href="login.html">login</a>
+            <a href="register.html">register</a>
+            <a href="orders.html">my orders</a>
+            <a href="cart.html">my cart</a>
+        </div>
+
+        <div class="box">
+            <h3>contact info</h3>
+            <p> <i class="fas fa-phone"></i> +123-456-7890 </p>
+            <p> <i class="fas fa-phone"></i> +111-222-3333 </p>
+            <p> <i class="fas fa-envelope"></i> shaikhanas@gmail.com </p>
+            <p> <i class="fas fa-map-marker-alt"></i> mumbai, india - 123-456 </p>
+        </div>
+
+        <div class="box">
+            <h3>follow us</h3>
+            <a href="#"><i class="fab fa-facebook-f"></i>facebook</a>
+            <a href="#"><i class="fab fa-twitter"></i>twitter</a>
+            <a href="#"><i class="fab fa-instagram"></i>instagram</a>
+            <a href="#"><i class="fab fa-linkedin"></i>linkedin</a>
+        </div>
+
+    </div>
+
+    <div class="credit">&copy; copyright @ <?html echo date('Y'); ?> by <span>mr. web designer</span> </div>
+
+</section>
+
+<script src="js/script.js"></script>
+
+</body>
+</html>
