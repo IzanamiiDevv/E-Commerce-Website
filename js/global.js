@@ -18,36 +18,77 @@ function addItem({img, name, price}) {
     const addToCartButtons = document.querySelectorAll('.add-to-cart');
 
     addToWishlistButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            const quantityInput = button.previousElementSibling;
-            const quantity = parseInt(quantityInput.value);
+        button.addEventListener('click', (e) => {
+            const quantity = button.parentElement.querySelector('.qty').value - 0;
+            const name = button.parentElement.querySelector('.name').innerHTML;
             updateQuantity(name, 'wishlist', quantity);
         });
     });
 
     addToCartButtons.forEach(button => {
         button.addEventListener('click', () => {
-            const quantityInput = button.previousElementSibling.previousElementSibling;
-            const quantity = parseInt(quantityInput.value);
+            const quantity = button.parentElement.querySelector('.qty').value - 0;
+            const name = button.parentElement.querySelector('.name').innerHTML;
             updateQuantity(name, 'cart', quantity);
         });
     });
 }
 
-const data = [
-    {
-        name:'tulip',
-        wishlist:2,
-        cart:2
-    }
-]
+
+const data = []
 
 function updateQuantity(itemName, type, quantity) {
-    console.log(itemName,type,quantity);
-    
+    const existingItem = data.find(item => item.name === itemName);
+
+    if (existingItem) {
+        if(type == 'cart'){
+            existingItem.cart = quantity;
+        }else {
+            existingItem.wishlist = quantity;
+        }
+    } else {
+        if(type == 'cart'){
+            data.push({
+                name: itemName,
+                wishlist: 0,
+                cart: quantity
+            });
+        }else {
+            data.push({
+                name: itemName,
+                wishlist: quantity,
+                cart: 0
+            });
+        }
+    }
+
+    console.log(data);
+    const hashed = btoa(JSON.stringify(data));
+    console.log(hashed);
+    updateLinks(hashed);
 }
 
-function getParameterByName(name, url) {
+function updateLinks(data){
+    const pageUrls = [
+        'home.html',
+        'about.html',
+        'wishlist.html',
+        'cart.html',
+        'shop.html',
+        'search_page.html'
+    ];
+    pageUrls.forEach(url => {
+        const links = document.querySelectorAll(`a[href="${url}"]`);
+        links.forEach(link => {
+            link.href = `${link.href}?v=${data}`;
+            console.log(link.href)
+        });
+    });
+}
+
+
+
+function getURI(name='v', url) {
     if (!url) url = window.location.href;
     name = name.replace(/[\[\]]/g, '\\$&');
     const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
@@ -57,4 +98,4 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-export { addItem };
+export { addItem, getURI, updateLinks };

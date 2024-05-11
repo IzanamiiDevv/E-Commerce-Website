@@ -1,20 +1,6 @@
-import { addItem, getParameterByName } from "./global.js";
+import { addItem, getURI, updateLinks } from "./global.js";
 
-const data = getParameterByName('data');
+const data = getURI('v');
+updateLinks(data);
 
-console.log(data);
-
-const v = [
-    {
-        name:'tulip',
-        wishlist:2,
-        cart:2
-    }
-]
-
-const stringify = JSON.stringify(v);
-const encode = btoa(stringify);
-
-console.log("encoded: ",encode);
-
-console.log("decoded: ", JSON.parse(atob(encode)));
+console.log(JSON.parse(atob(data)));
