@@ -73,7 +73,7 @@
     </div>
 
     <div class="wishlist-total">
-        <p>grand total : <span>$<?html echo $grand_total; ?>/-</span></p>
+        <p>grand total : <span id="total-display"></span></p>
         <a href="shop.html" class="option-btn">continue shopping</a>
         <a href="wishlist.html?delete_all" class="delete-btn <?html echo ($grand_total > 1)?'':'disabled' ?>" onclick="return confirm('delete all from wishlist?');">delete all</a>
     </div>

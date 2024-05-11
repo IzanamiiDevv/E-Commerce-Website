@@ -41,7 +41,7 @@ function addToWishlist({img, name, price}, count){
         <a href="" class="fas fa-eye"></a>
         <img src="${img}" class="image">
         <div class="name">${name} x ${count}</div>
-        <div class="price">$${price} > $${getTotal(price, count)}</div>
+        <div class="price">$<span class="total">${getTotal(price, count)}</span></div>
         <input type="submit" value="add to cart" name="add_to_cart" class="btn"> 
     </form>
     `;
@@ -89,9 +89,7 @@ function updateQuantity(itemName, type, quantity) {
         }
     }
 
-    console.log(data);
     const hashed = btoa(JSON.stringify(data));
-    console.log(hashed);
     updateLinks(hashed);
 }
 

@@ -14,3 +14,14 @@ for(let i = 0; i < items.length; i++){
         }
     }
 }
+
+function setGrandTotal(){
+    let total = 0;
+    document.querySelectorAll('.total').forEach(value => {
+        total += value.innerHTML - 0;
+    });
+
+    document.getElementById('total-display').innerText = `$${total}`;
+}
+
+setGrandTotal();
