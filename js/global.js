@@ -35,7 +35,7 @@ function addItem({img, name, price}) {
 }
 
 
-const data = []
+const data = [];
 
 function updateQuantity(itemName, type, quantity) {
     const existingItem = data.find(item => item.name === itemName);
@@ -77,13 +77,50 @@ function updateLinks(data){
         'shop.html',
         'search_page.html'
     ];
+
     pageUrls.forEach(url => {
-        const links = document.querySelectorAll(`a[href="${url}"]`);
+        const links = document.querySelectorAll(`a[href*="${url}"]`);
         links.forEach(link => {
-            link.href = `${link.href}?v=${data}`;
-            console.log(link.href)
+            let clear = "";
+            // Remove any existing query parameter
+            const index = link.href.indexOf('?');
+            if (index !== -1) {
+                clear = link.href.substring(0, index);
+            } else {
+                clear = link.href;
+            }
+    
+            // Append the new query parameter
+            const query = `${clear}?v=${data}`;
+            link.setAttribute('href', query);
         });
     });
+    
+/*
+pageUrls.forEach(url => {
+        const links = document.querySelectorAll(`a[href*="${url}"]`);
+        links.forEach(link => {
+            let clear = "";
+
+            for(let i = 0; i < link.href.length; i++){
+                if(link.href[i] == 'v'){
+                    return;
+                }
+                clear += link.href[i];
+            }
+
+            console.log(clear);
+
+
+            link.href = clear;
+            const query = `${clear}?v=${data}`;
+
+            console.log(query);
+
+            link.href = query;
+        });
+    });
+*/
 }
 
 
