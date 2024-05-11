@@ -1,7 +1,16 @@
+import items from "./items.js";
 import { addToWishlist, getURI, updateLinks } from "./global.js";
 
-let data = getURI('v');
-updateLinks(data);
-let paresed = JSON.parse(atob(data));
+let rawData = getURI('v');
+updateLinks(rawData);
+let data = JSON.parse(atob(rawData));
 
-addToWishlist();
+console.log(data);
+
+for(let i = 0; i < items.length; i++){
+    for(let j = 0; j < data.length; j++){
+        if(items[i].name == data[j].name && data[j].wishlist != 0){
+            addToWishlist(items[i],data[j].wishlist);
+        }
+    }
+}

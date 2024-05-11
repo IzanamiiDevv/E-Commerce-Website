@@ -34,14 +34,14 @@ function addItem({img, name, price}) {
     });
 }
 
-function addToWishlist({img, name, price}){
+function addToWishlist({img, name, price}, count){
     const temp = `
     <form class="box">
         <a href="" class="fas fa-times" onclick=""></a>
         <a href="" class="fas fa-eye"></a>
         <img src="${img}" class="image">
-        <div class="name">${name}</div>
-        <div class="price">${price}</div>
+        <div class="name">${name} x ${count}</div>
+        <div class="price">$${price} > $${getTotal(price, count)}</div>
         <input type="submit" value="add to cart" name="add_to_cart" class="btn"> 
     </form>
     `;
@@ -52,6 +52,9 @@ function addToWishlist({img, name, price}){
 
 }
 
+function getTotal(price, count){
+    return price * count;
+}
 
 let data = [];
 
