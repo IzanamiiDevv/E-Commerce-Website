@@ -68,21 +68,8 @@
 
     <h1 class="title">products added</h1>
 
-    <div class="box-container">
+    <div class="box-container" id="item-container">
 
-    <form action="" method="POST" class="box">
-        <a href="wishlist.html?delete=<?html echo $fetch_wishlist['id']; ?>" class="fas fa-times" onclick="return confirm('delete this from wishlist?');"></a>
-        <a href="view_page.html?pid=<?html echo $fetch_wishlist['pid']; ?>" class="fas fa-eye"></a>
-        <img src="uploaded_img/<?html echo $fetch_wishlist['image']; ?>" alt="" class="image">
-        <div class="name"><?html echo $fetch_wishlist['name']; ?></div>
-        <div class="price">$<?html echo $fetch_wishlist['price']; ?>/-</div>
-        <input type="hidden" name="product_id" value="<?html echo $fetch_wishlist['pid']; ?>">
-        <input type="hidden" name="product_name" value="<?html echo $fetch_wishlist['name']; ?>">
-        <input type="hidden" name="product_price" value="<?html echo $fetch_wishlist['price']; ?>">
-        <input type="hidden" name="product_image" value="<?html echo $fetch_wishlist['image']; ?>">
-        <input type="submit" value="add to cart" name="add_to_cart" class="btn">
-        
-    </form>
     </div>
 
     <div class="wishlist-total">

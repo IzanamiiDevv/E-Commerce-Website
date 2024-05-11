@@ -1,5 +1,8 @@
 import items from "./items.js";
-import { addItem } from "./global.js";
+import { addItem, getURI, updateLinks } from "./global.js";
+
+const data = getURI('v');
+updateLinks(data);
 
 const search = document.getElementById('search');
 

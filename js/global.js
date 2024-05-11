@@ -34,8 +34,32 @@ function addItem({img, name, price}) {
     });
 }
 
+function addToWishlist({img, name, price}){
+    const temp = `
+    <form class="box">
+        <a href="" class="fas fa-times" onclick=""></a>
+        <a href="" class="fas fa-eye"></a>
+        <img src="${img}" class="image">
+        <div class="name">${name}</div>
+        <div class="price">${price}</div>
+        <input type="submit" value="add to cart" name="add_to_cart" class="btn"> 
+    </form>
+    `;
 
-const data = [];
+    const itemContainer = document.getElementById('item-container');
+    itemContainer.innerHTML += temp;
+
+
+}
+
+
+let data = [];
+
+try {
+    data = JSON.parse(atob(getURI('v')))
+} catch (error) {
+    data = [];
+}
 
 function updateQuantity(itemName, type, quantity) {
     const existingItem = data.find(item => item.name === itemName);
@@ -108,4 +132,4 @@ function getURI(name='v', url) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-export { addItem, getURI, updateLinks };
+export { addToWishlist, addItem, getURI, updateLinks };

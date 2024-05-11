@@ -1,6 +1,7 @@
-import { addItem, getURI, updateLinks } from "./global.js";
+import { addToWishlist, getURI, updateLinks } from "./global.js";
 
-const data = getURI('v');
+let data = getURI('v');
 updateLinks(data);
+let paresed = JSON.parse(atob(data));
 
-console.log(JSON.parse(atob(data)));
+addToWishlist();
