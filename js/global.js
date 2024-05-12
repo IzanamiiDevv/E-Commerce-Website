@@ -40,7 +40,7 @@ function addToWishlist({img, name, price}, count){
         <div class="fas fa-times remove-btn"></div>
         <a class="fas fa-eye"></a>
         <img src="${img}" class="image">
-        <div class="name"><span class="item-name">${name}</span> x ${count}</div>
+        <div class="name"><span class="item-name">${name}</span> x <span class="quantity">${count}</span></div>
         <div class="price">$<span class="total">${getTotal(price, count)}</span></div>
         <input type="submit" value="add to cart" name="add_to_cart" class="btn"> 
     </div>
@@ -50,14 +50,25 @@ function addToWishlist({img, name, price}, count){
     itemContainer.innerHTML += temp;
 
     const remover = document.querySelectorAll(".remove-btn");
+    const addToCart = document.querySelectorAll(".btn");
 
-    remover.forEach((element)=>{
+    remover.forEach(element =>{
         element.addEventListener('click',()=>{
             const itemName = element.parentElement.querySelector('.item-name').innerText;
             updateQuantity(itemName, 'wishlist', 0);
             element.parentElement.remove();
         });
     });
+
+    addToCart.forEach(element => {
+        element.addEventListener('click',()=>{
+            const itemName = element.parentElement.querySelector('.item-name').innerText;
+            const quantity = element.parentElement.querySelector('.quantity').innerHTML;
+            updateQuantity(itemName, 'wishlist', 0);
+            updateQuantity(itemName, 'cart', quantity);
+            element.parentElement.remove();
+        });
+    })
 }
 
 function addToCart({img, name, price}, count){
