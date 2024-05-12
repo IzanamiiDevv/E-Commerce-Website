@@ -38,6 +38,15 @@ remover.addEventListener('click',()=>{
     updateLinks(btoa(JSON.stringify(data)));
 })
 
+document.getElementById('checkout-btn').addEventListener('click',()=>{
+    alert("Payment Successfull");
+    document.getElementById('total-display').innerText = `$${0}`;
+    document.getElementById('item-container').innerHTML = "";
+    for(let i = 0; i < data.length; i++){
+        data[i].cart = 0;
+    }
+    updateLinks(btoa(JSON.stringify(data)));
+});
 
 renderWishlist(data);
 setGrandTotal();
