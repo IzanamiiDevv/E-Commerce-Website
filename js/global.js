@@ -60,6 +60,31 @@ function addToWishlist({img, name, price}, count){
     });
 }
 
+function addToCart({img, name, price}, count){
+    const temp = `
+    <div class="box">
+        <div class="fas fa-times remove-btn"></div>
+        <a class="fas fa-eye"></a>
+        <img src="${img}" class="image">
+        <div class="name"><span class="item-name">${name}</span> x ${count}</div>
+        <div class="price">$<span class="total">${getTotal(price, count)}</span></div>
+    </div>
+    `;
+
+    const itemContainer = document.getElementById('item-container');
+    itemContainer.innerHTML += temp;
+
+    const remover = document.querySelectorAll(".remove-btn");
+
+    remover.forEach((element)=>{
+        element.addEventListener('click',()=>{
+            const itemName = element.parentElement.querySelector('.item-name').innerText;
+            updateQuantity(itemName, 'cart', 0);
+            element.parentElement.remove();
+        });
+    });
+}
+
 
 function getTotal(price, count){
     return price * count;
@@ -143,4 +168,4 @@ function getURI(name='v', url) {
     return decodeURIComponent(results[2].replace(/\+/g, ' '));
 }
 
-export { addToWishlist, addItem, getURI, updateLinks };
+export { addToCart, addToWishlist, addItem, getURI, updateLinks };

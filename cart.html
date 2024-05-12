@@ -72,28 +72,31 @@
 
     <h1 class="title">products added</h1>
 
-    <div class="box-container">
+    <div class="box-container" id="item-container">
+
+<!--
     <div  class="box">
-        <a href="cart.html?delete=<?html echo $fetch_cart['id']; ?>" class="fas fa-times" onclick="return confirm('delete this from cart?');"></a>
-        <a href="view_page.html?pid=<?html echo $fetch_cart['pid']; ?>" class="fas fa-eye"></a>
-        <img src="uploaded_img/<?html echo $fetch_cart['image']; ?>" alt="" class="image">
-        <div class="name"><?html echo $fetch_cart['name']; ?></div>
-        <div class="price">$<?html echo $fetch_cart['price']; ?>/-</div>
+        <a href="" class="fas fa-times" onclick="return confirm('delete this from cart?');"></a>
+        <a href="" class="fas fa-eye"></a>
+        <img src="./flowers/beach florist.jpg" class="image">
+        <div class="name">Basta</div>
+        <div class="price">$10</div>
         <form action="" method="post">
             <input type="hidden" value="<?html echo $fetch_cart['id']; ?>" name="cart_id">
             <input type="number" min="1" value="<?html echo $fetch_cart['quantity']; ?>" name="cart_quantity" class="qty">
             <input type="submit" value="update" class="option-btn" name="update_quantity">
         </form>
-        <div class="sub-total"> sub-total : <span>$<?html echo $sub_total = ($fetch_cart['price'] * $fetch_cart['quantity']); ?>/-</span> </div>
+        <div class="sub-total"> sub-total : <span>$10</span> </div>
     </div>
+-->
     </div>
 
     <div class="more-btn">
-        <a href="cart.html?delete_all" class="delete-btn <?html echo ($grand_total > 1)?'':'disabled' ?>" onclick="return confirm('delete all from cart?');">delete all</a>
+        <a id="remove-all" class="delete-btn <?html echo ($grand_total > 1)?'':'disabled' ?>">delete all</a>
     </div>
 
     <div class="cart-total">
-        <p>grand total : <span>$<?html echo $grand_total; ?>/-</span></p>
+        <p>grand total : <span id="total-display"></span></p>
         <a href="shop.html" class="option-btn">continue shopping</a>
         <a href="checkout.html" class="btn  <?html echo ($grand_total > 1)?'':'disabled' ?>">proceed to checkout</a>
     </div>
@@ -147,6 +150,7 @@
  </section>
 
 <script src="js/script.js"></script>
+<script type="module" src="js/cart.js"></script>
 
 </body>
 </html>
