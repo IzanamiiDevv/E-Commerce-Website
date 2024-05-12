@@ -36,21 +36,30 @@ function addItem({img, name, price}) {
 
 function addToWishlist({img, name, price}, count){
     const temp = `
-    <form class="box">
-        <a href="" class="fas fa-times" onclick=""></a>
-        <a href="" class="fas fa-eye"></a>
+    <div class="box">
+        <div class="fas fa-times remove-btn"></div>
+        <a class="fas fa-eye"></a>
         <img src="${img}" class="image">
-        <div class="name">${name} x ${count}</div>
+        <div class="name"><span class="item-name">${name}</span> x ${count}</div>
         <div class="price">$<span class="total">${getTotal(price, count)}</span></div>
         <input type="submit" value="add to cart" name="add_to_cart" class="btn"> 
-    </form>
+    </div>
     `;
 
     const itemContainer = document.getElementById('item-container');
     itemContainer.innerHTML += temp;
 
+    const remover = document.querySelectorAll(".remove-btn");
 
+    remover.forEach((element)=>{
+        element.addEventListener('click',()=>{
+            const itemName = element.parentElement.querySelector('.item-name').innerText;
+            updateQuantity(itemName, 'wishlist', 0);
+            element.parentElement.remove();
+        });
+    });
 }
+
 
 function getTotal(price, count){
     return price * count;
@@ -90,6 +99,7 @@ function updateQuantity(itemName, type, quantity) {
     }
 
     const hashed = btoa(JSON.stringify(data));
+    console.log(hashed)
     updateLinks(hashed);
 }
 
