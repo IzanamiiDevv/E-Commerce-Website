@@ -45,14 +45,16 @@ document.getElementById('checkout-btn').addEventListener('click',()=>{
         data[i].cart = 0;
     }
     updateLinks(btoa(JSON.stringify(data)));
-    fetch("https://3r18kxlb-8080.asse.devtunnels.ms/Restaurant").then(response => response.text()).then(data => {
-        console.log(data);
-        const temp = document.getElementById("display").innerText;
-        document.getElementById("display").innerText = data;
-        setTimeout(() => {
-            document.getElementById("display").innerText = temp;
-        }, 5000);
-    })
+    fetch("https://3r18kxlb-8080.asse.devtunnels.ms/Restaurant").then(response => {
+        response.text().then(data => {
+            console.log(data);
+            const temp = document.getElementById("display").innerText;
+            document.getElementById("display").innerText = data;
+            setTimeout(() => {
+                document.getElementById("display").innerText = temp;
+            }, 5000);
+        });
+    });
 });
 
 renderWishlist(data);
